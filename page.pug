@@ -1,0 +1,11 @@
+html
+    head
+        title
+        link(rel="stylesheet", type="text/css", href="")
+    body
+        form(method="post",action="auth/login")
+            label(for="username")= lang.username
+            input(type="text",name="username",id="username")
+            label(for="password")= lang.password
+            input(type="password",name="password",id="password")
+            button= lang.connection
