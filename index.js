@@ -2,12 +2,11 @@ var express = require('express');
 var router = express.Router();
 var tayrPassport = require('tayr-passport');
 
-module.exports = function(G) {
+module.exports = function(G,mdl) {
 
-    var identifier = G.auth.conf.identifier;
-    var T = G[G.auth.conf.tayrProp];
-    var usersTable = G.auth.conf.usersTable;
-
+    var identifier = mdl.conf.identifier;
+    var T = G.E[mdl.conf.tayrProp];
+    var usersTable = mdl.conf.usersTable;
 
     var passport = tayrPassport.use({
         app: G.app,
@@ -20,13 +19,13 @@ module.exports = function(G) {
     });
 
     // GET CURRENT USER ID
-    router.post('/session/userid', G.auth.middlewares.isAuthenticated, function(req, res, next) {
+    router.post('/session/userid', mdl.F.isAuthenticated, function(req, res, next) {
         res.json({ success: true, msg: req.user.id });
     });
 
     // Cookies Setter
-    router.get('/remember', G.auth.middlewares.isAuthenticated, function(req, res, next) {
-        G.auth.helpers.setRemember(req, res).then(function() {
+    router.get('/remember', mdl.F.isAuthenticated, function(req, res, next) {
+        mdl.F.setRemember(req, res).then(function() {
             res.redirect('/');
         });
     });
@@ -60,7 +59,7 @@ module.exports = function(G) {
     //                 user.role = G.H.defaults.user.role;
     //                 user.register_date = new Date();
     //                 user.store().then(function() {
-    //                     G.helpers.auth.manualLogin(user, req, res, next);
+    //                     G.F.auth.manualLogin(user, req, res, next);
     //                 });
     //             }
     //         });
@@ -87,5 +86,5 @@ module.exports = function(G) {
     //     }));
     // });
 
-    return router;
+    G.app.use('/' + mdl.prefix, router);
 };
