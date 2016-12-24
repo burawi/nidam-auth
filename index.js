@@ -15,7 +15,7 @@ module.exports = function(G,mdl) {
     });
 
     router.get('/', function(req, res, next) {
-        res.render(__dirname+'/views/pages/login.pug',{lang: G.lang});
+        res.render(__dirname+'/views/pages/login.pug',{lang: G.E.lang});
     });
 
     // GET CURRENT USER ID
@@ -86,5 +86,5 @@ module.exports = function(G,mdl) {
     //     }));
     // });
 
-    G.app.use('/' + mdl.prefix, router);
+    G.app.use('/' + mdl.conf.prefix, router);
 };
