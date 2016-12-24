@@ -3,7 +3,7 @@ var md5 = require('md5');
 
 module.exports = function (G,conf) {
 
-    var T = G[conf.tayrProp];
+    var T = G.E[conf.tayrProp];
     var sessionTable = conf.sessionTable;
 
     var exports = {
