@@ -4,8 +4,8 @@ html
         link(rel="stylesheet", type="text/css", href="")
     body
         form(method="post",action="auth/login")
-            label(for="username")= lang.username
+            label(for="username")= mdl.conf.msg.username
             input(type="text",name="username",id="username")
-            label(for="password")= lang.password
+            label(for="password")= mdl.conf.msg.password
             input(type="password",name="password",id="password")
-            button= lang.connection
+            button= mdl.conf.msg.connection

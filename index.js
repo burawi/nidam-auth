@@ -15,7 +15,7 @@ module.exports = function(G,mdl) {
     });
 
     router.get('/', function(req, res, next) {
-        res.render(__dirname+'/views/pages/login.pug',{lang: G.E.lang});
+        res.render(__dirname+'/views/pages/login.pug',{mdl: mdl});
     });
 
     // GET CURRENT USER ID

@@ -7,7 +7,10 @@ module.exports = function (G) {
         sessionTable: 'session',
         identifier: 'username',
         msg: {
-            authRequired: 'Authentication required! please login'
+            authRequired: 'Authentication required! please login',
+            username: 'username',
+            password: 'password',
+            connection: 'connection'
         }
     };
 
