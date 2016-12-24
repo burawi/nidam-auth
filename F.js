@@ -10,6 +10,9 @@ module.exports = function (G,conf) {
         isAuthenticated: function (req, res, next) {
             return (req.user) ? next() : res.json({success: false, msg: conf.msg.authRequired, code: 'AUTHREQ'});
         },
+        isAdmin: function (req, res, next) {
+            return (req.user && req.user.role == "admin") ? next() : res.json({success: false, msg: conf.msg.adminRequired, code: 'ADMREQ'});
+        },
         remember: function (req, res, next) {
             if(!req.user && req.cookies.sessionId !== undefined && req.cookies.sessionKey !== undefined){
                 T.load(sessionTable, parseInt(req.cookies.sessionId)).then(function (session) {

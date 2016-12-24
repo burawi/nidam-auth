@@ -8,6 +8,7 @@ module.exports = function (G) {
         identifier: 'username',
         msg: {
             authRequired: 'Authentication required! please login',
+            adminRequired: 'Only Admins can do that!',
             username: 'username',
             password: 'password',
             connection: 'connection'
