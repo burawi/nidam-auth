@@ -11,7 +11,7 @@ module.exports = function (G,conf) {
             return (req.user) ? next() : res.json({success: false, msg: conf.msg.authRequired, code: 'AUTHREQ'});
         },
         isAdmin: function (req, res, next) {
-            return (req.user && req.user.role == "admin") ? next() : res.json({success: false, msg: conf.msg.adminRequired, code: 'ADMREQ'});
+            return (req.user && req.user.role == "admin") ? next() : res.json({success: false, msg: conf.msg.adminRequired, code: 'ADMNREQ'});
         },
         remember: function (req, res, next) {
             if(!req.user && req.cookies.sessionId !== undefined && req.cookies.sessionKey !== undefined){

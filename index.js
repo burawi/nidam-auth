@@ -86,5 +86,5 @@ module.exports = function(G,mdl) {
     //     }));
     // });
 
-    G.app.use('/' + mdl.conf. prefix, router);
+    G.app.use('/' + mdl.conf.prefix, router);
 };
