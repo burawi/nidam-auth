@@ -1,0 +1,23 @@
+// compileCompressed: ../client/css/style.css
+@import "./../../main/scss/global.scss";
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    @extend .bg-gradient-primary;
+
+    form {
+        background-color: #FFF;
+        padding: 16px 32px;
+        border-radius: 8px;
+        @extend .pure-form;
+        @extend .pure-form-stacked;
+
+        button {
+            @extend .btn-accent;
+            @extend .pure-button;
+        }
+    }
+}

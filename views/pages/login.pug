@@ -1,14 +1,13 @@
 html
     head
         title
-        link(rel="stylesheet", type="text/css", href=origin + "/css/style.css")
-        link(rel="stylesheet", type="text/css", href=origin + "/auth/style.css")
-    body.bg-primary
-        form.pure-form.pure-form-stacked(method="post",action="auth/login")
+        link(rel="stylesheet", type="text/css", href= req.origin + "/auth/css/style.css")
+    body
+        form(method="post",action="auth/login")
             fieldset
-                legend= mdl.conf.msg.login
-                label(for="username")= mdl.conf.msg.username
+                legend= req.strs.login
+                label(for="username")= req.strs.username
                 input(type="text",name="username",id="username")
-                label(for="password")= mdl.conf.msg.password
+                label(for="password")= req.strs.password
                 input(type="password",name="password",id="password")
-                button.btn-accent.pure-button= mdl.conf.msg.connection
+                button= req.strs.login

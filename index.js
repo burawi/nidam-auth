@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var adminRouter = express.Router();
 var tayrPassport = require('tayr-passport');
 
 module.exports = function(G,mdl) {
@@ -24,11 +25,13 @@ module.exports = function(G,mdl) {
     });
 
     // Cookies Setter
-    router.get('/remember', mdl.F.isAuthenticated, function(req, res, next) {
-        mdl.F.setRemember(req, res).then(function() {
+    router.get('/remember',
+        mdl.F.isAuthenticated,
+        mdl.F.setRemember,
+        function(req, res, next) {
             res.redirect('/');
-        });
-    });
+        }
+    );
 
     // LOGIN REQUEST
     router.post('/login', passport.authenticate('login', {
@@ -87,4 +90,5 @@ module.exports = function(G,mdl) {
     // });
 
     G.app.use('/' + mdl.conf.prefix, router);
+    G.app.use('/admin/' + mdl.conf.prefix, adminRouter);
 };
